@@ -1,0 +1,266 @@
+#root {
+$cardColor: white;
+$headerTextColor: black;
+$typeColor: white;
+$backgoundColor: rgba(233, 233, 233, 0.8);
+}
+/*
+[data-theme="dark"] {
+  $cardColor: rgb(85, 85, 85);
+  $headerTextColor: rgb(255, 255, 255);
+  $typeColor: black;
+}
+*/
+*{
+  font-family: "Flexo-Regular", arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  //background-image: url(assets/backgroundImage.jpeg);
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  margin: auto;
+  background-color: var(--backgoundColor);
+  padding-bottom: 8vh;
+}
+
+.input-text {
+  min-height: 16px;
+  padding: 10px 12px;
+  border: 1px solid black;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.006) 1px 2px 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.card {
+  border: 1px solid rgb(73, 73, 73);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 250px;
+  background-color: var(--cardColor);
+  .card-image {
+    max-width: 60%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(90, 90, 90);
+  }
+}
+
+.header-container{
+  padding: 15px;
+  width: 50%;
+  margin: 10px auto;
+  text-align: center;
+  color: var(--headerTextColor);
+}
+
+header h1 {
+  font-size: 45px;
+  margin-bottom: -10px;
+}
+
+header h3 {
+  font-size: 28px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+}
+
+.types-container {
+  margin-top: 10px;
+}
+
+.types-container span {
+  padding: 5px;
+  margin: 0 4px;
+  
+}
+
+.normal {
+  background-color: #A8A77A;
+  border: 1px solid #A8A77A;
+  border-radius: 5px;
+  color: var(--typeColor);
+}
+
+.fire {
+  background-color: #EE8130;
+  border: 1px solid #EE8130;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+
+}
+
+.water {
+  background-color: #6390F0;
+  border: 1px solid #6390F0;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.grass {
+  background-color: #7AC74C;
+  border: 1px solid #7AC74C;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+  
+}
+
+.flying {
+  background-color: #A98FF3;
+  border: 1px solid #A98FF3;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.fighting {
+  background-color: #C22E28;
+  border: 1px solid #C22E28;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.poison {
+  background-color: #A33EA1;
+  border: 1px solid #A33EA1;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.electric {
+  background-color: #F7D02C;
+  border: 1px solid #F7D02C;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.ground {
+  background-color: #E2BF65;
+  border: 1px solid #E2BF65;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.rock {
+  background-color: #B6A136;
+  border: 1px solid #B6A136;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.psychic {
+  background-color: #F95587;
+  border: 1px solid #F95587;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.ice {
+  background-color: #96D9D6;
+  border: 1px solid #96D9D6;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.bug {
+  background-color: #A6B91A;
+  border: 1px solid #A6B91A;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.ghost {
+  background-color: #735797;
+  border: 1px solid #735797;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.steel {
+  background-color: #B7B7CE;
+  border: 1px solid #B7B7CE;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.dragon {
+  background-color: #6F35FC;
+  border: 1px solid #6F35FC;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.dark {
+  background-color: #705746;
+  border: 1px solid #705746;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+
+.fairy {
+  background-color: #D685AD;
+  border: 1px solid #D685AD;
+  border-radius: 5px;
+  color: var(--typeColor);
+  
+}
+.filters_container{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  button {
+    padding: 5px;
+    margin: 3px 3px;
+   font-size: 18px;
+   cursor: pointer;
+
+  }
+}
+
+.darkModeToggle {
+  position: absolute;
+  left: 19vw;
+  top: 5vh;
+}
