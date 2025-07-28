@@ -2,7 +2,7 @@
 - introduce StyledComponents and style some MUI components (i.e. Button, Card)
 - dark mode style declarations should be done using StyledComponents (and MUI Theme and Context API for switching)
 - write some tests (component and at least one e2e scenario)
-- handle duplicate pokemon search (use some MUI components to display error message)
++ handle duplicate pokemon search (use some MUI components to display error message)
 - add another page (route) that instead of calling poke API to retrieve one pokemon, 
 gets all of them and displays them on paginated list of cards; add an input that allows the user to filter pokemon list by name
 
@@ -21,3 +21,4 @@ Mini progress notes
 - dark mode working BUT I had to move theme to App.tsx and root is small?
 - check if there is a duplicate (used find instead of include because include didn't seem to work), 
 trying to add error message but it doesn't display
+- check works, error message is being rendered. I used useState to keep track of an error (can work with any error tho)

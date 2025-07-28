@@ -19,6 +19,8 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [error, setError] = useState<errorContainer>({status: false, message:''});
 
+  // export this stuff
+  // mógłbym go dalej importować i robić jego kopie tutaj i poprostu robić tu ten darkMode ? ...  ??
 const appTheme = createTheme({
   palette: {
     mode: darkMode ? 'dark' : 'light',
@@ -35,8 +37,6 @@ const appTheme = createTheme({
     },
   },
 });
-
-//export const ThemeContext = createContext(theme);
 
   const addCard = async (input: string) => {
     try {
@@ -64,12 +64,10 @@ const appTheme = createTheme({
       };
 
       const found = cardList.find((card) => card.name === pokemonCard.name);
-
       if(found)
       {
-        return (
-          <Alert severity="warning">Couldn't add a duplicate of an existing card.</Alert>
-        )
+        setError({status: true, message: "Can't add duplicate cards"});
+        return;
       }
 
       setCardList([...cardList, pokemonCard]);
@@ -107,6 +105,12 @@ const appTheme = createTheme({
             </button>
           ))}
         </div>
+        <div>
+          {error.status && 
+            (<Alert severity="warning" onClose={() => {setError({status: false, message:''})}}>
+              {error.message}
+            </Alert>)}
+          </div>
         <div className="cards-container">
           {cardList.map(
             (item, index) =>
@@ -124,12 +128,7 @@ const appTheme = createTheme({
               )
           )}
         </div>
-          <div>
-          {error.status && 
-            (<Alert severity="warning" onClose={() => {setError({status: false, message:''})}}>
-              {error.message}
-            </Alert>)}
-          </div>
+
         </div>
       </Paper>
     </ThemeProvider>
