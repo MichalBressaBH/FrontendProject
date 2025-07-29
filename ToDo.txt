@@ -5,6 +5,7 @@
 + handle duplicate pokemon search (use some MUI components to display error message)
 - add another page (route) that instead of calling poke API to retrieve one pokemon, 
 gets all of them and displays them on paginated list of cards; add an input that allows the user to filter pokemon list by name
+- consider accessibility of the app
 
 - clean up App.tsx more
 - clean up scss file ?

@@ -22,6 +22,7 @@ export const AddCard = ({ onAdd }: Props) => {
   return (
     <div>
       <input
+        id="addCardInput"
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
         className="input-text"
