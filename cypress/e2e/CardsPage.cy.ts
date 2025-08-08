@@ -1,6 +1,6 @@
 describe('test cards page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173/');
+    cy.visit('/');
   })
 
   it('H1 and H3 are on the cards page', () => {
@@ -9,19 +9,45 @@ describe('test cards page', () => {
 
   });
 
-  it('Add card correctly with number and name', () => {
+  it('Add card correctly with number', () => {
     // contains input. use input
-    // intercept request and see if data matches
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*').as('getPokemon');
+
+    //cy.addCard('1');
     cy.get('#addCardInput').type('1');
     cy.get('button').contains(/add card/i).click();
-    cy.contains('h2', 'bulbasaur').parent().should('be.visible');
+    // Wait for the API call
+    cy.wait('@getPokemon').then((interception) => {
+      // Grab the requested URL
+      const requestUrl = interception.request.url;
+      // Assert it's either ID 1 or bulbasaur
+      expect(
+        requestUrl.endsWith('/pokemon/1') || requestUrl.endsWith('/pokemon/bulbasaur'),
+        `Expected request URL to be /pokemon/1 or /pokemon/bulbasaur but got: ${requestUrl}`
+      ).to.be.true;
+    });
+    
+    cy.get('[data-testid="card-1"]').should('be.visible');
+  });
 
-    // reload to clean cards
-    cy.reload();
+  it('Add card correctly with pokemon name', () => {
+    // contains input. use input
+    cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*').as('getPokemon');
 
     cy.get('#addCardInput').type('bulbasaur');
     cy.get('button').contains(/add card/i).click();
-    cy.contains('h2', 'bulbasaur').parent().should('be.visible');
+    // Wait for the API call
+    cy.wait('@getPokemon').then((interception) => {
+      // Grab the requested URL
+      const requestUrl = interception.request.url;
+      // Assert it's either ID 1 or bulbasaur
+      expect(
+        requestUrl.endsWith('/pokemon/1') || requestUrl.endsWith('/pokemon/bulbasaur'),
+        `Expected request URL to be /pokemon/1 or /pokemon/bulbasaur but got: ${requestUrl}`
+      ).to.be.true;
+    });
+    
+    cy.get('[data-testid="card-1"]').should('be.visible');
   });
 
   it('Throw error when cant fetch correctly', () => {
@@ -55,7 +81,26 @@ describe('test cards page', () => {
   });
 
   it('Filters work correctly', () => {
-    // 
+    // grass and poison pokemon
+    cy.get('#addCardInput').type('1');
+    cy.get('button').contains(/add card/i).click();
+
+    // add a fire pokemon
+    cy.get('#addCardInput').type('4');
+    cy.get('button').contains(/add card/i).click();
+
+    // filter only fire pokemons
+    cy.get('button').contains(/fire/i).click();
+
+    cy.get('[data-testid="card-4"]').should('be.visible');
+    cy.get('[data-testid="card-1"]').should('not.exist');
+
+    // reset filters
+    cy.get('button').contains(/x/i).click();
+
+    cy.get('[data-testid="card-4"]').should('be.visible');
+    cy.get('[data-testid="card-1"]').should('be.visible');
+
   });
   
 })

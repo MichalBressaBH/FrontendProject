@@ -9,6 +9,7 @@ gets all of them and displays them on paginated list of cards; add an input that
 
 - clean up App.tsx more
 - clean up scss file ?
+- test file could use a reusable piece of code that will simplify adding cards
 
 Mini progress notes
 - updated node, react and vite

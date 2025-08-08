@@ -20,7 +20,7 @@ interface TypeSlot {
 
 export const Card = (props: Props) => {
   return (
-    <div className="card">
+    <div className="card" data-testid={`card-${props.id}`}>
       <img alt={props.name} src={props.image} className="card-image" />
       <h2>
         {props.name} #{props.id}
