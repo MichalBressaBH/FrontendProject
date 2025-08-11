@@ -13,9 +13,7 @@ describe('test cards page', () => {
     // contains input. use input
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*').as('getPokemon');
 
-    //cy.addCard('1');
-    cy.get('#addCardInput').type('1');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard('1');
     // Wait for the API call
     cy.wait('@getPokemon').then((interception) => {
       // Grab the requested URL
@@ -34,8 +32,7 @@ describe('test cards page', () => {
     // contains input. use input
     cy.intercept('GET', 'https://pokeapi.co/api/v2/pokemon/*').as('getPokemon');
 
-    cy.get('#addCardInput').type('bulbasaur');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard('bulbasaur');
     // Wait for the API call
     cy.wait('@getPokemon').then((interception) => {
       // Grab the requested URL
