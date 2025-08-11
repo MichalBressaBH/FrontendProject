@@ -61,17 +61,15 @@ describe('test cards page', () => {
 
   it('Cant add duplicate cards', () => {
     // add card
-    cy.get('#addCardInput').type('1');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard("1");
   
     // try to add the same card
-    cy.get('#addCardInput').type('bulbasaur');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard("1");
 
     // alert message is visible
     cy.contains('div', "Can't add duplicate cards").parent().parent().should('be.visible');
 
-    // click X to hide the message
+    // click X to close the message
     cy.get(`[aria-label="Close"]`).click()
     cy.contains('div', "Can't add duplicate cards").should('not.exist');
 
@@ -79,12 +77,10 @@ describe('test cards page', () => {
 
   it('Filters work correctly', () => {
     // grass and poison pokemon
-    cy.get('#addCardInput').type('1');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard("1");
 
     // add a fire pokemon
-    cy.get('#addCardInput').type('4');
-    cy.get('button').contains(/add card/i).click();
+    cy.addCard("4");
 
     // filter only fire pokemons
     cy.get('button').contains(/fire/i).click();
