@@ -1,6 +1,6 @@
 describe('test cards page', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/AddCards');
   })
 
   it('H1 and H3 are on the cards page', () => {
